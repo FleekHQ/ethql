@@ -61,9 +61,16 @@ export class EthqlServer {
 
     this._status = 'stopping';
 
-    await this.server.stop();
+    try {
+      await this.server.stop();
+    } catch (e) {
+      console.error(`Error stopping server: ${e}`);
+      return false;
+    }
+
     this._address = this._status = this.server = null;
     this._status = 'stopped';
+    return true;
   }
 
   protected createServer() {
