@@ -1,20 +1,21 @@
 {
-  "name": "@ethql/distro",
+  "name": "@terminal/ethql",
   "version": "0.0.1",
-  "description": "A GraphQL interface to Ethereum",
-  "author": "ConsenSys",
+  "description": "Terminal's GraphQL interface to Ethereum",
+  "author": "Terminal",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ConsenSys/ethql"
+    "url": "https://github.com/terminal-systems/ethql"
   },
   "bugs": {
-    "url": "https://github.com/ConsenSys/ethql/issues"
+    "url": "https://github.com/terminal-systems/ethql/issues"
   },
   "contributors": [
     "Raúl Kripalani <raul.kripalani@gmail.com>",
     "Akhila Raju <akhila.raju@consensys.net>",
-    "Jonathan Buhler"
+    "Jonathan Buhler",
+    "Janison Sivarajah"
   ],
   "keywords": [
     "ethereum",
