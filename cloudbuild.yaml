@@ -1,0 +1,19 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ["info"]
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: [
+      'beta',
+      'functions',
+      'call','gcp-cicd-set-pending',
+      '--data={"commit_sha":"$COMMIT_SHA", "logUrl":"https://console.cloud.google.com/gcr/builds/$BUILD_ID"}'
+  ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/${PROJECT_ID}/terminal-ethql:$COMMIT_SHA','services/ethql']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${PROJECT_ID}/terminal-ethql:$COMMIT_SHA']
+  env: ['CLOUDSDK_COMPUTE_ZONE=us-east1-b', 'CLOUDSDK_CONTAINER_CLUSTER=terminalapp']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/$PROJECT_ID/terminal-ethql:$COMMIT_SHA"]
+
+images: ['gcr.io/${PROJECT_ID}/terminal-ethql']
