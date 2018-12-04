@@ -9,7 +9,7 @@ steps:
       '--data={"commit_sha":"$COMMIT_SHA", "logUrl":"https://console.cloud.google.com/gcr/builds/$BUILD_ID"}'
   ]
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/${PROJECT_ID}/terminal-ethql:$COMMIT_SHA','services/ethql']
+  args: ['build', '-t', 'gcr.io/${PROJECT_ID}/terminal-ethql:$COMMIT_SHA','.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/${PROJECT_ID}/terminal-ethql:$COMMIT_SHA']
   env: ['CLOUDSDK_COMPUTE_ZONE=us-east1-b', 'CLOUDSDK_CONTAINER_CLUSTER=terminalapp']
