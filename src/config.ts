@@ -9,9 +9,9 @@ export class Options {
   public caching?: boolean;
 }
 
-const ETH_RPC_PROTOCOL = process.env.ETH_RPC_PROTOCOL || 'http';
-const ETH_RPC_HOST = process.env.ETH_HOST || 'localhost';
-const ETH_RPC_PORT = process.env.ETH_PORT || 8545;
+const ETH_RPC_HOST = process.env.ETH_RPC_HOST || 'http://localhost';
+const ETH_RPC_PORT = process.env.ETH_RPC_PORT || 8545;
+const ETH_RPC_URL_PATH = process.env.ETH_RPC_URL_PATH || 443;
 
 /* tslint:disable */
 const options: Options | commander.Command = commander
@@ -19,7 +19,7 @@ const options: Options | commander.Command = commander
   .option(
     '-j, --jsonrpc <endpoint>',
     'specify the JSON-RPC endpoint [e.g., https://mainnet.infura.io/${INFURA_ID} or https://localhost:8545]; supported transports: http, https, wss, ipc',
-    `${ETH_RPC_PROTOCOL}://${ETH_RPC_HOST}:${ETH_RPC_PORT}`,
+    `${ETH_RPC_HOST}:${ETH_RPC_PORT}${ETH_RPC_URL_PATH}`,
   )
   .option(
     '-m, --query-max-size <limit>',
